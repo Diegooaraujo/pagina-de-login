@@ -21,6 +21,7 @@ form{
     height: 400px;
     background-color: rgb(155, 152, 152);
     border-radius: 30px;
+    position: relative;
 
 }
 h1{
@@ -49,4 +50,38 @@ a{
 #Enviar{
     margin: 0 auto 10px auto;
     cursor: pointer;
+}
+#mensagem-sucesso{
+    background-color: green;
+
+
+
+font-weight: bold;
+    height: 30px;
+    
+    width: 400px;
+    z-index: 2;
+    padding: 5px;
+    top: 370px;
+    position: absolute;
+    border-radius: 0px 0px 30px 30px ;
+
+}
+
+.mensagem-erro{
+    
+    font-weight: bold;
+    height: 30px;
+    background-color: red;
+    width: 400px;
+    z-index: 2;
+    padding: 5px;
+    top: 370px;
+    position: absolute;
+    border-radius: 0px 0px 30px 30px ;
+}
+.mensagem-erro p{
+    margin: 0 auto;
+    font-size:20px ;
+    font-family: Arial, Helvetica, sans-serif;
 }

@@ -11,13 +11,25 @@
         $con->conectar();
         if($senha == $confSenha){
             if($con->cadastrar($nome,$email,$senha)){
-                echo"cadastrado com sucesso";
+                ?>
+                <div id="mensagem-sucesso">
+                    cadastrado com sucesso!
+                </div>
+                <?php
             }else{
-                echo"email ja cadastrado!";
+                ?>
+                <div class="mensagem-erro">
+                    <p>email ja cadastrado!</p>
+                </div> 
+                <?php 
             }
            
         }else{
-            echo"Senha e confirmar Senha não correspondem!";
+            ?>
+            <div class="mensagem-erro">
+                <p>email ja cadastrado!</p>
+            </div>
+            <?php
         }
         
 
@@ -50,7 +62,7 @@
             <label for="confSenha">Confirmar Senha:</label>
             <input type="password" placeholder="Confirmar senha" name="confiSenha" id="confSenha">
             <input type="submit" value="Enviar" id="button" name="submit">
-            <a href="index.html">Login</a>
+            <a href="index.php">Login</a>
         </form>
     </div>
 </body>

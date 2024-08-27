@@ -35,20 +35,26 @@
 
         public function logar($email,$senha){
             //verificar e mail e senha 
-             $sql = $this->pdo->prepare("INSERT INTO usuarios (nome, email, senha) VALUE (:e,:s)");
+             $sql = $this->pdo->prepare("SELECT id FROM usuarios WHERE email = :e AND senha = :s");
              $sql->bindValue(":e",$email);
              $sql->bindValue(":s",md5($senha));
              $sql->execute();
+             
              if($sql->rowCount()>0){
                 //ja esta cadastrado
                 $dado = $sql->fetch();
+                print_r($dado);
                 session_start();
                 $_SESSION['id_usuario']=$dado['id'];
+                
                 return true;
-
+                
              }else{
                 //não esta cadstrado
+                
                 return false ;
+                
+                
              }
         }
 
