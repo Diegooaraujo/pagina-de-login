@@ -1,11 +1,29 @@
 <?php 
-
+    include_once("Usuarios.php");
+    $con = new Usuarios;
     if(isset($_POST['submit'])){
-        include_once("Usuarios.php");
-        $nome =($_POST['nome']);
-        $email = ($_POST['email']);
-        $senha = ($_POST['senha']);
         
+
+        $nome =addslashes($_POST['nome']);
+        $email =addslashes ($_POST['email']);
+        $senha = addslashes($_POST['senha']);
+        $confSenha = addslashes($_POST['confiSenha']);
+        $con->conectar();
+        if($senha == $confSenha){
+            if($con->cadastrar($nome,$email,$senha)){
+                echo"cadastrado com sucesso";
+            }else{
+                echo"email ja cadastrado!";
+            }
+           
+        }else{
+            echo"Senha e confirmar Senha não correspondem!";
+        }
+        
+
+        //verificar se está vazio
+        // if(!empty($nome))
+
     }
 
     
@@ -30,7 +48,7 @@
             <label for="senha">Senha:</label>
             <input type="password" name="senha" id="senha" placeholder="senha">
             <label for="confSenha">Confirmar Senha:</label>
-            <input type="password" placeholder="Confirmar senha" name="confSenha" id="confSenha">
+            <input type="password" placeholder="Confirmar senha" name="confiSenha" id="confSenha">
             <input type="submit" value="Enviar" id="button" name="submit">
             <a href="index.html">Login</a>
         </form>
