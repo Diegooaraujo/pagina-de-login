@@ -26,7 +26,7 @@
                 $sql = $this->pdo->prepare("INSERT INTO usuarios (nome, email, senha) VALUE (:n,:e,:s)");
                 $sql->bindValue(':n',$nome);
                 $sql->bindValue(':e',$email);
-                $sql->bindValue(':s',md5($senha)); //md5 para criptografar
+                $sql->bindValue(':s',$senha); //md5 para criptografar
                 $sql->execute();
                 return true;
                 
@@ -37,25 +37,25 @@
             //verificar e mail e senha 
              $sql = $this->pdo->prepare("SELECT id FROM usuarios WHERE email = :e AND senha = :s");
              $sql->bindValue(":e",$email);
-             $sql->bindValue(":s",md5($senha));
+             $sql->bindValue(":s",$senha);
              $sql->execute();
              
-             if($sql->rowCount()>0){
-                //ja esta cadastrado
-                $dado = $sql->fetch();
-                print_r($dado);
-                session_start();
-                $_SESSION['id_usuario']=$dado['id'];
+            
+             
+                if($sql->rowCount() > 0){
+                     //ja esta cadastrado
+                     
+                    $dado = $sql->fetch();
+                    session_start();
+                    $_SESSION['id_usuario']=$dado['id'];
                 
-                return true;
+                    return true;
                 
-             }else{
-                //não esta cadstrado
+                }else{
+                    //não esta cadstrado
                 
-                return false ;
-                
-                
-             }
+                    return false;   
+                }
         }
 
 

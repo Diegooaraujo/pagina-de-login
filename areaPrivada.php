@@ -9,3 +9,4 @@
 ?>
 
 seja bem vindo !
+<a href="Sair.php">Sair</a>

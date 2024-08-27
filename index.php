@@ -37,11 +37,14 @@
             $sql->conectar();
             
             if($sql->logar($email,$senha)){
-                header("lacation: areaPrivada.php");
+                    
+                
+                header("location: areaPrivada.php");
+            
             }else{
                 echo"email ou senha não encontrado";
                 
-            }
+             }
         }
     }
     
